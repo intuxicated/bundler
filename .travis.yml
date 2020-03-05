@@ -43,8 +43,8 @@ stages:
 
 env:
   # We need to know if changes to rubygems will break bundler on release
-  - RGV=master BUNDLER_SPEC_SUB_VERSION=3.0.0
-  - RGV=master
+  - RGV=gem_install_plugins_issues BUNDLER_SPEC_SUB_VERSION=3.0.0
+  - RGV=gem_install_plugins_issues
   # Test the latest rubygems release with all of our supported rubies
   - RGV=v3.0.6 BUNDLER_SPEC_SUB_VERSION=3.0.0
   - RGV=v3.0.6
@@ -56,7 +56,7 @@ jobs:
       stage: linting
     # Ruby 2.3 also tested in 2.x mode
     - rvm: 2.3.8
-      env: RGV=master
+      env: RGV=gem_install_plugins_issues
       stage: test
     - rvm: 2.3.8
       env: RGV=v3.0.6
@@ -75,9 +75,9 @@ jobs:
       stage: test
     # Ruby-head (we want to know how we're doing, but not fail the build)
     - rvm: ruby-head
-      env: RGV=master
+      env: RGV=gem_install_plugins_issues
       stage: test
 
   allow_failures:
     - rvm: ruby-head
-      env: RGV=master
+      env: RGV=gem_install_plugins_issues
